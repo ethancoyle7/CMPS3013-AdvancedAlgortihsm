@@ -1,43 +1,51 @@
  ---------------------------------------------
-| Author    :  Ethan Coyle                    |
-| Class     :  Advanced Algorithms CMPS 3013  |
-| Instructor:  Dr. Colmeneras                 |
-| Assignment:  Program 1                      |
- ---------------------------------------------
+| Author    :  Ethan Coyle                   |
+| Class     :  Advanced Algorithms CMPS 3013 |
+| Instructor:  Dr. Colmenares                |
+| Assignment:  Program 1                     |
+|              Linked List using STL List    |
+----------------------------------------------
 
 
 We Are Now Displaying Our List
  ------------------------------
-harry potter - id:1
-ethan coyle - id:2
-samwise gamgee - id:3
-gandalf white - id:4
-bilbo baggins - id:5
-Frodo Baggins - id:6
+Eduardo Colmenares - id:1
+catherine stringfellow - id:2
+terry griffin - id:3
+tina johnson - id:4
+ranette halverson - id:5
+richard simson - id:6
+jane doe - id:7
 -------------------------------
-After Removing from the Head of Linked List
 
+After Removing from the Head 
 We Are Now Displaying Our List
  ------------------------------
-ethan coyle - id:2
-samwise gamgee - id:3
-gandalf white - id:4
-bilbo baggins - id:5
-Frodo Baggins - id:6
+catherine stringfellow - id:2
+terry griffin - id:3
+tina johnson - id:4
+ranette halverson - id:5
+richard simson - id:6
+jane doe - id:7
 -------------------------------
- After Removing From Tail Of the Linked List
+
+After Removing From Tail 
 We Are Now Displaying Our List
  ------------------------------
-ethan coyle - id:2
-samwise gamgee - id:3
-gandalf white - id:4
-bilbo baggins - id:5
+catherine stringfellow - id:2
+terry griffin - id:3
+tina johnson - id:4
+ranette halverson - id:5
+richard simson - id:6
 -------------------------------
+
 
  Showing Student Names in List 
  ------------------------------
+catherine
+terry
+tina
+ranette
+richard
 ethan
-samwise
-gandalf
-bilbo
  ------------------------------
