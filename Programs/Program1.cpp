@@ -3,7 +3,7 @@
 // Author     : Ethan Coyle                      //
 // Instructor : Dr.Colmeneras                    //
 // Class      : CMPS 3013(Advanced Algorithms)   //
-// Assignment : Program NewStudent               //
+// Assignment : Program 1 STL Link List          //
 //                                               //
 // The purpose of this program is to show the    //
 // Proper implementation of a linked list with   //
@@ -15,22 +15,22 @@
 #include<iostream>
 #include<fstream>
 #include <list>
-
+using namespace std;
 //using the stl library, we utilize the pop-front 
 //pop-back, and the list include. WE also utilize the 
-using namespace std;
-using namespace std;
+
 
 
 //function prototypes
 void printPageHeading(ofstream& OutFile);
-void PopulateVector();
+void PopulatingStudentList();
 void DisplayList(ofstream& OutFile);
 void RemoveCurHead(ofstream& OutFile);
 void RemoveFromTail(ofstream& OutFile);
 void AddStudent();
 void ShowNames(ofstream& OutFile);
 void openFiles(ofstream& OutFile);
+void OptionMenu(ofstream& OutFile);
 
 
 
@@ -43,13 +43,13 @@ struct Student
 };
 
 // creating  new linked list using stl
-//by utilizing this we create a vector of students 
+//by utilizing this we create a STL Container of students 
 // that utilizes the stl library 
 list<Student> NewStudent;
 
 //#####################################################//
 //function name                                        // 
-//->  PopulateVector()                                 //
+//->  PopulatingStudentList()                                 //
 //                                                     //
 //what it does?                                        //
 // -> The purpose of this function is                  //
@@ -57,36 +57,42 @@ list<Student> NewStudent;
 //    until the user doesnt want to add any more       //
 //paramters                                            //
 // -> This accepts no parameters but is accesing       //
-//     the stl linked list for the vector of user      //
+//     the stl linked list for the STL Container ofuser//
 //     and creating new students held in the student   //
-//     vector.                                         //
+//     STL Container.                                  //
 // return type                                         //
 // -> no return type because  void                     //
-//    This is just populating the student vector       //  
+//    This is just populating the student STL Container//  
 //#####################################################//
-void PopulateVector()
+void PopulatingStudentList()
 {
     while (1)//bool value that holds true
     {
         string FName, LName;
-        char G,Input;
+        char G;
         int Age, IdNum;
-        cout << "Enter Students First Name\n";
+        //populating the list with students
+        cout << "Enter Students First Name\t\t";
         cin >> FName;
-        cout << "Enter Students Last Name\n";
+        cout << "Enter Students Last Name\t\t";
         cin >> LName;
-        cout << "Enter Students Gender(as M for Male or F for Female)\n";
+        cout << "What is The Gender?\n";
+        cout<<" (M for Male|F for Female)\t\t";
         cin >> G;
-        cout << "Enter Students Age\n";
+        cout << "Enter Students Age\t\t";
         cin >> Age;
-        cout << "Enter the Students ID Number \n";
+        cout << "Enter the Students ID Number \t\t";
         cin >> IdNum;
+        //student record held inside with all stuct data
         NewStudent.push_back({ FName,LName,G,Age,IdNum });
-        cout << "Would you Like to add another Record?(Enter Y or N)\n";
-        
+
+        //as per guidelines aprompt as many as want
+        cout << "Would you Like to add another Record?\n";
+        cout<<"(Y for Yes or N for No ? )\t\t";
+        char Input;
         cin >> Input;
         //if the input by the user is N. then will go back to main menu
-        if (Input != 'Y' && Input != 'y')
+        if (Input != 'y' && Input != 'Y')
             break;
     }
 }
@@ -99,12 +105,13 @@ void PopulateVector()
 //    the list of names and thier ids                  //
 //paramters                                            //
 // -> This accepts no parameters but is accesing       //
-//     the stl linked list for the vector of user      //
+//     the stl linked list for the STL Containerof user//
 //     inputted student values starting from the head  //
 //     also utilized by begin()                        //
 // return type                                         //
 // -> no return type because  void                     //
-//    ths just prints out the name and id for vector of//
+//    ths just prints out the name and id for STL      //
+//    Container of                                     //
 //    students inputed by the user                     //  
 //#####################################################//
 void DisplayList(ofstream& OutFile)
@@ -117,6 +124,7 @@ void DisplayList(ofstream& OutFile)
         OutFile << "The List Container is Currently Empty" << "\n";
     else
     {
+        //while is not eaul to the end of the list
         while (Node != NewStudent.end())
         {
             //pointer while traversing the link list to print out the name from
@@ -125,7 +133,7 @@ void DisplayList(ofstream& OutFile)
                 " - id:" << Node->id << "\n";
             Node++;
         }
-        OutFile << "-------------------------------\n";
+        OutFile << "-------------------------------\n\n";
     }
 
 }
@@ -141,7 +149,7 @@ void DisplayList(ofstream& OutFile)
 //                                                     //
 //paramters                                            //
 // -> This accepts no parameters but is accesing       //
-//     the stl linked list for the vector of user      //
+//     the stl linked list for the STL Container o user//
 //     to find the head and remove it                  //
 // return type                                         //
 // -> no return type because  void                     //
@@ -151,8 +159,13 @@ void DisplayList(ofstream& OutFile)
 void RemoveCurHead(ofstream& OutFile)
 {
     //removing the node at the head
-    NewStudent.pop_front();// (pop head) pointing to next value
-    OutFile << "After Removing from the Head of Linked List\n\n";
+    if (NewStudent.empty())
+        OutFile << "The List Container is Currently Empty" << "\n";
+    else
+    {
+        NewStudent.pop_front();// (pop head) pointing to next value
+        OutFile << "After Removing from the Head \n";
+    }
 
 }
 
@@ -167,7 +180,7 @@ void RemoveCurHead(ofstream& OutFile)
 //                                                     //
 //paramters                                            //
 // -> This accepts no parameters but is accesing       //
-//     the stl linked list for the vector of user      //
+//     the stl linked list for the STL Container ofuser//
 //     to find the head and remove it                  //
 // return type                                         //
 // -> no return type because  void                     //
@@ -178,10 +191,14 @@ void RemoveFromTail(ofstream& OutFile)
 {
     //removing the tail most student record
     // and then tail will be the option before that one
-    NewStudent.pop_back(); // stl link list operator pop_back(tail)
-
-    //test if removed
-    OutFile << "After Removing From Tail Of the Linked List\n";
+    if (NewStudent.empty())
+        OutFile << "The List Container is Currently Empty" << "\n";
+    else
+    {
+        NewStudent.pop_back(); // stl link list operator pop_back(tail)
+       //test if removed
+        OutFile << "After Removing From Tail \n";
+    }
 
 }
 //#####################################################//
@@ -209,10 +226,12 @@ void AddStudent()
     cin >> NumRecords;
     while (NumRecords--)//while counting down to end of adding students
     {
+        //initializing the entry for student record
         string FName, LName;
         char G;
         int Age, IdNum;
 
+        //prompting for the user input for the student
         cout << "Enter Students First Name\n";
         cin >> FName;
         cout << "Enter Students Last Name\n";
@@ -223,6 +242,7 @@ void AddStudent()
         cin >> Age;
         cout << "Enter Student  ID Number \n";
         cin >> IdNum;
+        //pass this new student to the  list with all the info
         NewStudent.push_back({ FName,LName, G,Age,IdNum });
     }
 }
@@ -232,20 +252,21 @@ void AddStudent()
 //                                                     //
 //what it does?                                        //
 // -> the purpose of this function is to peruse through//
-//    the STL list vector and print out the current    //
+//    the STL list STL Container and print out the curr//
 //    students and their id numbers  starting at the   //
 //    head node and working all the way to the end tail//
 //                                                     //
 //paramters                                            //
 // -> This accepts no parameters but it accesses the   //
-//    Given list vector and finds the students and id  //
+//    Given list STL Container and finds the students  //
+//    and id                                           //
 // return type                                         //
 // -> no return type  just displays the current list   //
 //    starting at the head node                        //  
 //#####################################################//
 void ShowNames(ofstream& OutFile)
 {
-    //utilizing the std template for vector link list we 
+    //utilizing the std template for STL Container link list we 
     //peruse and start at beggining and go to the end(tail)
     list<Student>::iterator it;
     it = NewStudent.begin();
@@ -261,6 +282,7 @@ void ShowNames(ofstream& OutFile)
     }
     OutFile << " ------------------------------\n";
 }
+
 
 /////////////////////////////////////////////////////
 // function name                                   //
@@ -281,11 +303,12 @@ void ShowNames(ofstream& OutFile)
 void printPageHeading(ofstream& OutFile)
 {
     OutFile << " ---------------------------------------------\n";
-    OutFile << "| Author    :  Ethan Coyle                    |" << '\n';
-    OutFile << "| Class     :  Advanced Algorithms CMPS 3013  |\n";
-    OutFile << "| Instructor:  Dr. Colmeneras                 |\n";
-    OutFile << "| Assignment:  Program 1                      |" << '\n';
-    OutFile << " ---------------------------------------------\n\n\n";
+    OutFile << "| Author    :  Ethan Coyle                   |" << '\n';
+    OutFile << "| Class     :  Advanced Algorithms CMPS 3013 |\n";
+    OutFile << "| Instructor:  Dr. Colmenares                |\n";
+    OutFile << "| Assignment:  Program 1                     |" << '\n';
+    OutFile << "|              Linked List using STL List    |" << '\n';
+    OutFile << "----------------------------------------------\n\n\n";
     cout << "********************************************\n";
     cout << "**         WELCOME TO OUR LINK LIST       **\n";
     cout << "**          TO DISPLAY AN UTILIZE         **\n";
@@ -319,9 +342,59 @@ void DisplayMenu()
     cout << "**   To remove node from tail   Press 4   **\n";
     cout << "**   To add Records to   tail   Press 5   **\n";
     cout << "**   To Show Names in List      Press 6   **\n";
-    cout << "**   To Display Option Menu     Press 7   **\n";
+    cout << "**   For The Menu Option Again  Press 7   **\n";
     cout << "**   To Exit                    Press 8   **\n";
     cout << "********************************************\n";
+}
+void OptionMenu(ofstream& OutFile)//utilizing the outfile streaming
+{
+    while (1)//while option is true this is in tune with link list stl
+    {
+        //user enters the specified option they want to do
+        cout << "What Would You Like To Do? (Enter 1-8) ";
+
+        int choice;
+        cin >> choice;
+        while (choice < 1 || choice>8)//if the entry is out of bounds
+        {
+            cout << "That Is Not a Valid Option Please Enter a\n" <<
+                "Number Between 1 and 8";
+            cin >> choice;
+        }
+        switch (choice)//switch statement to go to functions
+        {
+        case 1:
+            PopulatingStudentList();//populating the STL Container or students
+            break;
+        case 2:
+
+            OutFile << "We Are Now Displaying Our List\n";
+            OutFile << " ------------------------------\n";
+            DisplayList(OutFile);//display student info
+            break;
+        case 3:
+            RemoveCurHead(OutFile);// function choice to remove surrent head
+            break;
+        case 4:
+            RemoveFromTail(OutFile);//function to remove the current tail
+            break;
+        case 5:
+            AddStudent();// user will be able to add another student to the tail
+            break;
+        case 6:
+
+
+            ShowNames(OutFile);//show names of students in link list
+            break;
+        case 7:
+            DisplayMenu();//This adds user easement if they forget the menu
+                          //displays the menu down the terminal to refresh
+                          //option choices
+            break;
+        case 8:
+            return;// closeing out of program
+        }
+    }
 }
 
 //#####################################################//
@@ -350,61 +423,18 @@ void openFiles(ofstream& OutFile)
     // Open outfile.
     OutFile.open(outFileName);
 }
+
 //Begin our main driver for our program
 int main()
 {
-
+    //minimizing the ammount of data in main
+    
     ofstream OutFile;
     openFiles(OutFile);// prompt for input output
     //printing out the header for program
     printPageHeading(OutFile);
+
     DisplayMenu(); //display options menu
-
-    while (1)//while option is true this is in tune with link list stl
-    {
-        //user enters the specified option they want to do
-        cout << "What Would You Like To Do? (Enter 1-8) ";
-
-        int choice;
-        cin >> choice;
-        while (choice < 1 || choice>8)//if the entry is out of bounds
-        {
-            cout << "That Is Not a Valid Option Please Enter a\n" <<
-                "Number Between 1 and 7";
-            cin >> choice;
-        }
-        switch (choice)//switch statement to go to functions
-        {
-        case 1:
-            PopulateVector();//populating the vector or students
-            break;
-        case 2:
-
-            OutFile << "We Are Now Displaying Our List\n";
-            OutFile << " ------------------------------\n";
-            DisplayList(OutFile);//display student info
-            break;
-        case 3:
-            RemoveCurHead(OutFile);// we are removing the current head
-            break;
-        case 4:
-            RemoveFromTail(OutFile);//function to remove tail node
-            break;
-        case 5:
-            AddStudent();//user adding more students
-            break;
-        case 6:
-
-
-            ShowNames(OutFile);//show names of students in link list
-            break;
-        case 7:
-            DisplayMenu(); // for user easement
-            break;
-        case 8:
-            return 0;// closeing out of program
-        }
-    }
-
+    OptionMenu(OutFile);//go to the display menu
     return 0; // end of program exitting now
 }
