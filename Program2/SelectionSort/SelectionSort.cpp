@@ -1,37 +1,38 @@
-//================================================//
-//                                                //
-// Student 1  : Ethan Coyle                       //
-// Student 2  : Daniel Portillo                   //
-// Instructor : Dr. Colmenares                    //
-// Class      : CMPS 3013 Advanced Algorithms     //
-// Assignment : Program 4 Select Sort Ascending   //
-//================================================//
-// What it does -                                 //
-//    This programs purpose isto utilize selection//
-//    on the infile with descending  order        //
-//    numbers 0 to 100000 and will catch the time //
-//    that it takes for the program to run and    //
-//    perform the sorting of the infile using     // 
-//    the selection sorting on the infile contain //
-//    the ascending order elements from 0- 100000 //
-//    amd then output the time in a nice, easy to //
-//    read format for the viewer to see how long  //
-//    it takes to read in the data and then the   //
-//    ammount of time it takes to sort the given  //
-//    input that is placed inside of an array     //
-//================================================//
+// Student 1  : Ethan Coyle                                                      //
+// Student 2  : Daniel Portillo                                                  //
+// User instructions: The program will prompt for the infile and outfile to read //
+//                    enter the name of the infile to read from and outfile then //
+//                    the code will compile. If the user would like to try anothe//
+//                    sort, then run the program again and enter the name of the //
+//                    next infile to read from and if want them in second output //
+//                    specify a different output name to keep separate same for  //
+//                    third infile run again and specifiy the input and output   //
+//===============================================================================//
+// Instructor : Dr. Colmenares                                                   //
+// Class      : CMPS 3013 Advanced Algorithms                                    //
+// Assignment : Program 4 Select Sort with (ascending,descending and rand input) //
+//===============================================================================//
+// What it does -                                                                //
+//    This programs purpose isto utilize selection                               //
+//    on the infile with specified   order                                       //
+//    numbers 0 to 100000 and will catch the time                                //
+//    that it takes for the program to run and                                   //
+//    perform the sorting of the infile using                                    // 
+//    the selection sorting on the infile contain                                //
+//    the ascending order elements from 0- 100000                                //
+//    amd then output the time in a nice, easy to                                //
+//    read format for the viewer to see how long                                 //
+//    it takes to read in the data and then the                                  //
+//    ammount of time it takes to sort the given                                 //
+//    input that is placed inside of an array                                    //
+//===============================================================================//
 
-//===============================================================================//
-// User instructions: Whenever you have the text file for ascending  order,      //
-// type that in the infile prompt for the infile name and the program will work  //
-// if being done in VSCode, copy the relative path into the infile name and will //
-// compile                                                                       //
-//===============================================================================//
 //===============================================================================//
 //    sorting code attributes by :                                               //
 //                                                                               //
 // https://www.tutorialspoint.com/cplusplus-program-to-implement-selection-sort  // 
 //===============================================================================//
+
 #include<iostream>
 #include <fstream>
 #include <chrono>    //for the start and stop time
@@ -206,7 +207,7 @@ int main()
     auto int_s = chrono::duration_cast<chrono::seconds>(end - start);
 
     OutFile << "\n\nUsing Selection Sort, it took : " << int_s.count() <<
-        " seconds to sort Ascending InFile" << endl;
+        " seconds to sort the  InFile" << endl;
     // display the sorted array to show that array has been sorted
     display(Container, count, OutFile);
     system("pause");
