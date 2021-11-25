@@ -1,31 +1,32 @@
-//================================================//
-//                                                //
-// Student 1  : Ethan Coyle                       //
-// Student 2  : Daniel Portillo                   //
-// Instructor : Dr. Colmenares                    //
-// Class      : CMPS 3013 Advanced Algorithms     //
-// Assignment : Program 4 Counting Sort Descending//
-//================================================//
-// What it does -                                 //
-//    This programs purpose is to utilize a count //
-//    sort on the infile with ascending order     //
-//    numbers 0 to 100000 and will catch the time //
-//    that it takes for the program to run and    //
-//    perform the sorting of the infile using     // 
-//    the counting sort algorithm since, the sort //
-//    sorts so quickly, we had to cast the timer  //
-//    to read in milliseconds to catch a somewhat //
-//    valid read in for the time and display to   //
-//    viewer so they can see how long it takes for//
-//    the algortihm to work from start to finish  //
-//================================================//
+// Student 1  : Ethan Coyle                                                      //
+// Student 2  : Daniel Portillo                                                  //
+// User instructions: The program will prompt for the infile and outfile to read //
+//                    enter the name of the infile to read from and outfile then //
+//                    the code will compile. If the user would like to try anothe//
+//                    sort, then run the program again and enter the name of the //
+//                    next infile to read from and if want them in second output //
+//                    specify a different output name to keep separate same for  //
+//                    third infile run again and specifiy the input and output   //
+//===============================================================================//
+// Instructor : Dr. Colmenares                                                   //
+// Class      : CMPS 3013 Advanced Algorithms                                    //
+// Assignment : Program 4 counti Sort with (ascending,descending and rand input) //
+//===============================================================================//
+// What it does -                                                                //
+//    This programs purpose isto utilize counting sort algorithm                 //
+//    on the infile with specified   order                                       //
+//    numbers 0 to 100000 and will catch the time                                //
+//    that it takes for the program to run and                                   //
+//    perform the sorting of the infile using                                    // 
+//    the selection sorting on the infile contain                                //
+//    the ascending order elements from 0- 100000                                //
+//    amd then output the time in a nice, easy to                                //
+//    read format for the viewer to see how long                                 //
+//    it takes to read in the data and then the                                  //
+//    ammount of time it takes to sort the given                                 //
+//    input that is placed inside of an array                                    //
+//===============================================================================//
 
-//===============================================================================//
-// User instructions: Whenever you have the text file for ascending  order,      //
-// type that in the infile prompt for the infile name and the program will work  //
-// if being done in VSCode, copy the relative path into the infile name and will //
-// compile                                                                       //
-//===============================================================================//
 //===============================================================================//
 //    sorting code attributes by :                                               //
 //                                                                               //
