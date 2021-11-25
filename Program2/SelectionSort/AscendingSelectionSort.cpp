@@ -1,19 +1,22 @@
 // Student 1  : Ethan Coyle                                                      //
 // Student 2  : Daniel Portillo                                                  //
-// User instructions: The program will prompt for the infile and outfile to read //
-//                    enter the name of the infile to read from and outfile then //
-//                    the code will compile. If the user would like to try anothe//
-//                    sort, then run the program again and enter the name of the //
-//                    next infile to read from and if want them in second output //
-//                    specify a different output name to keep separate same for  //
-//                    third infile run again and specifiy the input and output   //
+// User instructions: The program will prompt for the outfile to print to this   //
+//                    one will read from the ascending order input file and then //
+//                    perform and run the program and time the timing that it    //
+//                    takes to iterate through the whole infile and sort it.     //
+//                    Once Brought into Visual Studios attach the corresponding  //
+//                    infile and then run the program and it will compile in the //
+//                    solution explorer and the program will compile if need be, //
+//                    inside of the infile and exfile read in the user can input //
+//                    the relative path to the input file and that will compile  //
+//                    as well.                                                   //
 //===============================================================================//
 // Instructor : Dr. Colmenares                                                   //
 // Class      : CMPS 3013 Advanced Algorithms                                    //
-// Assignment : Program 4 Select Sort with (ascending,descending and rand input) //
+// Assignment : Program 4 Selection Sort with (AscendingOrder.txt)               //
 //===============================================================================//
 // What it does -                                                                //
-//    This programs purpose isto utilize selection                               //
+//    This programs purpose isto utilize selection sort                          //
 //    on the infile with specified   order                                       //
 //    numbers 0 to 100000 and will catch the time                                //
 //    that it takes for the program to run and                                   //
@@ -63,15 +66,11 @@ void display(int* array, int, ofstream& OutFile);
 void openFiles(ifstream& InFile, ofstream& OutFile)
 {
     // Declare variable for the Files. 
-    char inFileName[40];
+    
     char outFileName[40];
 
-    // Prompt the user for InFile name
-    cout << "Enter the input file name: ";
-    cin >> inFileName;
-
     // open input file
-    InFile.open(inFileName);
+    InFile.open("AscendingOrder.txt");
 
     // Prompt the user for OutFile name
     cout << "Enter the output file name: ";
@@ -131,7 +130,7 @@ void display(int* array, int size, ofstream& OutFile)
     OutFile << "The Sorted Array is Disaplyed Below\n\n";
     OutFile << "====================================\n\n";
     for (int i = 0; i < size; i++)
-        OutFile << array[i] << " "<< endl;
+        OutFile << array[i] << " " << endl;
 }
 
 //*********************************************************************//
@@ -207,7 +206,7 @@ int main()
     auto int_s = chrono::duration_cast<chrono::seconds>(end - start);
 
     OutFile << "\n\nUsing Selection Sort, it took : " << int_s.count() <<
-        " seconds to sort the  InFile" << endl;
+        " seconds to sort Ascending InFile" << endl;
     // display the sorted array to show that array has been sorted
     display(Container, count, OutFile);
     system("pause");
