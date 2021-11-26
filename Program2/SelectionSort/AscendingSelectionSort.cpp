@@ -44,40 +44,30 @@ using namespace std::chrono;
 using namespace std;
 
 // function prototypes
-void openFiles(ifstream& InFile, ofstream& OutFile);
+void openFiles(ifstream& InFile);
 void selectionSort(int* array, int size);
 void swapping(int& a, int& b);
-void display(int* array, int, ofstream& OutFile);
+void display(int* array, int);
 
 //#####################################################//
 //f(x) name                                            // 
-//  void openFiles(ifstream& InFile, ofstream& OutFile)//
+//  void openFiles(ifstream& InFile)                   //
 //                                                     //
 //what it does?                                        //
-// -> purpose is to user input in and outfile          //
+// -> purpose is to user input                         //
 //                                                     //
 //paramters                                            //
-// -> utilizes the ofstream and outfile                //
+// -> utilizes the input streaming                     //
 //                                                     //
 // return type                                         //
 // -> no return type because  void                     //
 //#####################################################//
 
-void openFiles(ifstream& InFile, ofstream& OutFile)
+void openFiles(ifstream& InFile)
 {
     // Declare variable for the Files. 
-    
-    char outFileName[40];
-
     // open input file
     InFile.open("AscendingOrder.txt");
-
-    // Prompt the user for OutFile name
-    cout << "Enter the output file name: ";
-    cin >> outFileName;
-
-    // Open outfile.
-    OutFile.open(outFileName);
 }
 
 // for isplaying purposes for reader and viewer easement
@@ -125,12 +115,12 @@ void swapping(int& a, int& b)
 //* Returns:														   //
 //*   -> Void( the variables are being passed by reference so no return//   
 //*********************************************************************//
-void display(int* array, int size, ofstream& OutFile)
+void display(int* array, int size)
 {
-    OutFile << "The Sorted Array is Disaplyed Below\n\n";
-    OutFile << "====================================\n\n";
+    cout << "The Sorted Array is Disaplyed Below\n\n";
+    cout << "====================================\n\n";
     for (int i = 0; i < size; i++)
-        OutFile << array[i] << " " << endl;
+        cout << array[i] << " " << endl;
 }
 
 //*********************************************************************//
@@ -179,8 +169,8 @@ int main()
     int n = 0;
 
     ifstream InFile;
-    ofstream OutFile;
-    openFiles(InFile, OutFile);// prompt for input output
+    
+    openFiles(InFile);// prompt for input output
 
     // Reading till end of file
     while (!InFile.eof())
@@ -205,14 +195,14 @@ int main()
     // from start to stop
     auto int_s = chrono::duration_cast<chrono::seconds>(end - start);
 
-    OutFile << "\n\nUsing Selection Sort, it took : " << int_s.count() <<
+    cout << "\n\nUsing Selection Sort, it took : " << int_s.count() <<
         " seconds to sort Ascending InFile" << endl;
     // display the sorted array to show that array has been sorted
-    display(Container, count, OutFile);
+    //display(Container, count);
     system("pause");
 
     //close the file and close out of program
     InFile.close();
-    OutFile.close();
+    
     return 0;
 }
