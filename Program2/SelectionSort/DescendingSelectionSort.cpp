@@ -1,15 +1,12 @@
 // Student 1  : Ethan Coyle                                                      //
 // Student 2  : Daniel Portillo                                                  //
-// User instructions: The program will prompt for the outfile to print to this   //
-//                    one will read from the descending order input file and then//
-//                    perform and run the program and time the timing that it    //
-//                    takes to iterate through the whole infile and sort it.     //
-//                    Once Brought into Visual Studios attach the corresponding  //
-//                    infile and then run the program and it will compile in the //
-//                    solution explorer and the program will compile if need be, //
-//                    inside of the infile and exfile read in the user can input //
-//                    the relative path to the input file and that will compile  //
-//                    as well.                                                   //
+// User instructions: The program will automatically read in the data file so    //
+//                    when comes time for compilation, make sure that the data   //
+//                    filess are in the same folder and can also bring then into //
+//                    visual studios solution explorer so after all that is done,//
+//                    the only thing that the user needs to do is to hit ctrl+f5 //
+//                    to compile and the program will run and then display the   //
+//                    time it took to sort the data                              //
 //===============================================================================//
 // Instructor : Dr. Colmenares                                                   //
 // Class      : CMPS 3013 Advanced Algorithms                                    //
@@ -43,40 +40,30 @@ using namespace std::chrono;
 using namespace std;
 
 // function prototypes
-void openFiles(ifstream& InFile, ofstream& OutFile);
+void openFiles(ifstream& InFile);
 void selectionSort(int* array, int size);
 void swapping(int& a, int& b);
-void display(int* array, int, ofstream& OutFile);
+void display(int* array, int);
 
 //#####################################################//
 //f(x) name                                            // 
-//  void openFiles(ifstream& InFile, ofstream& OutFile)//
+//  void openFiles(ifstream& InFile)                   //
 //                                                     //
 //what it does?                                        //
-// -> purpose is to user input in and outfile          //
+// -> purpose is to user input in                      //
 //                                                     //
 //paramters                                            //
-// -> utilizes the ofstream and outfile                //
+// -> utilizes the infile streaming                    //
 //                                                     //
 // return type                                         //
 // -> no return type because  void                     //
 //#####################################################//
 
-void openFiles(ifstream& InFile, ofstream& OutFile)
+void openFiles(ifstream& InFile)
 {
     // Declare variable for the Files. 
-    
-    char outFileName[40];
-
     // open input file
     InFile.open("DescendingOrder.txt");
-
-    // Prompt the user for OutFile name
-    cout << "Enter the output file name: ";
-    cin >> outFileName;
-
-    // Open outfile.
-    OutFile.open(outFileName);
 }
 
 // for isplaying purposes for reader and viewer easement
@@ -124,12 +111,12 @@ void swapping(int& a, int& b)
 //* Returns:														   //
 //*   -> Void( the variables are being passed by reference so no return//   
 //*********************************************************************//
-void display(int* array, int size, ofstream& OutFile)
+void display(int* array, int size)
 {
-    OutFile << "The Sorted Array is Disaplyed Below\n\n";
-    OutFile << "====================================\n\n";
+    cout << "The Sorted Array is Disaplyed Below\n\n";
+    cout << "====================================\n\n";
     for (int i = 0; i < size; i++)
-        OutFile << array[i] << " " << endl;
+        cout << array[i] << " " << endl;
 }
 
 //*********************************************************************//
@@ -178,8 +165,7 @@ int main()
     int n = 0;
 
     ifstream InFile;
-    ofstream OutFile;
-    openFiles(InFile, OutFile);// prompt for input output
+    openFiles(InFile);// prompt for input output
 
     // Reading till end of file
     while (!InFile.eof())
@@ -204,14 +190,13 @@ int main()
     // from start to stop
     auto int_s = chrono::duration_cast<chrono::seconds>(end - start);
 
-    OutFile << "\n\nUsing Selection Sort, it took : " << int_s.count() <<
+    cout << "\n\nUsing Selection Sort, it took : " << int_s.count() <<
         " seconds to sort descending InFile" << endl;
     // display the sorted array to show that array has been sorted
-    display(Container, count, OutFile);
+    //display(Container, count);
     system("pause");
 
     //close the file and close out of program
     InFile.close();
-    OutFile.close();
     return 0;
 }
