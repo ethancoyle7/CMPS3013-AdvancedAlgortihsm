@@ -38,13 +38,13 @@
 #include<iostream>
 #include <fstream>
 #include <chrono>    //for the start and stop time
-#include <time.h>    //clock
+#include <time.h>    //clock;
 using namespace std::chrono;// timer 
 using namespace std;
 
 //function prototypes
-void openFiles(ifstream& InFile, ofstream& OutFile);
-void print(int a[], int sz, ofstream& OutFile);
+void openFiles(ifstream& InFile);
+void print(int a[], int sz);
 
 
 //#####################################################//
@@ -61,21 +61,14 @@ void print(int a[], int sz, ofstream& OutFile);
 // -> no return type because  void                     //
 //#####################################################//
 
-void openFiles(ifstream& InFile, ofstream& OutFile)
+void openFiles(ifstream& InFile)
 {
-    // Declare variable for the Files. 
-    
-    char outFileName[40];
+	// Declare variable for the Files. 
 
-    // open input file
-    InFile.open("DescendingOrder.txt");
+	// open input file
+	InFile.open("DescendingOrder.txt");
 
-    // Prompt the user for OutFile name
-    cout << "Enter the output file name: ";
-    cin >> outFileName;
-
-    // Open outfile.
-    OutFile.open(outFileName);
+	
 }
 
 //*********************************************************************//
@@ -95,12 +88,12 @@ void openFiles(ifstream& InFile, ofstream& OutFile)
 //* Returns:														   //
 //*   -> Void( the variables are being passed by reference so no return//   
 //*********************************************************************//
-void print(int a[], int sz,ofstream& OutFile) 
+void print(int a[], int sz)
 {
-	OutFile << "\nThe Sorted Array is Disaplyed Below\n\n";
-	OutFile << "====================================\n\n";
-	for (int i = 0; i < sz; i++) 
-		OutFile << a[i] << " "<< endl;
+	cout<< "\nThe Sorted Array is Disaplyed Below\n\n";
+	cout << "====================================\n\n";
+	for (int i = 0; i < sz; i++)
+		cout << a[i] << " " << endl;
 }
 
 //*********************************************************************//
@@ -121,7 +114,7 @@ void print(int a[], int sz,ofstream& OutFile)
 //*   -> finishes going through the whole array until there is no      //
 //*   -> comparisons left to make                                      //   
 //*********************************************************************//
-void CountingSort(int arr[], int sz) 
+void CountingSort(int arr[], int sz)
 {
 	//initilize the variables
 	int i, j, k;
@@ -130,7 +123,7 @@ void CountingSort(int arr[], int sz)
 	//min and max both equal to the first index
 	min = max = arr[0];
 	//loop through to find the min and max
-	for (i = 1; i < sz; i++) 
+	for (i = 1; i < sz; i++)
 	{
 		min = (arr[i] < min) ? arr[i] : min;
 		max = (arr[i] > max) ? arr[i] : max;
@@ -155,9 +148,8 @@ int main()
 	// create the in and out files 
 	//go to the function to read in both files
 	ifstream InFile;
-	ofstream OutFile;
-	openFiles(InFile, OutFile);// prompt for input output
-	
+	openFiles(InFile);// prompt for input output
+
 	// size of the infile is 100001
 	int size = 100001;
 	// create te container array to hold the values
@@ -174,8 +166,8 @@ int main()
 		// increment the counter to count through the data
 		count++;
 	}
-	
-	
+
+
 	//if want to view the container holding the data call function
 	//print(Container, sz);
 	//start the timer for the program
@@ -189,7 +181,7 @@ int main()
 	// from start to stop
 	auto int_s = chrono::duration_cast<chrono::milliseconds>(end - start);
 
-	OutFile << "\n\nUsing Counting Sort, it took : " << int_s.count() <<
+	cout << "\n\nUsing Counting Sort, it took : " << int_s.count() <<
 		" milliseconds to sort Descending InFile" << "\n\n\n";
 
 	// display the sorted array to show that array has been sorted
@@ -198,6 +190,5 @@ int main()
 
 	//close the file and close out of program
 	InFile.close();
-	OutFile.close();
 	return 0;
 }
