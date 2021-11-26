@@ -1,15 +1,12 @@
 // Student 1  : Ethan Coyle                                                      //
 // Student 2  : Daniel Portillo                                                  //
-// User instructions: The program will prompt for the outfile to print to this   //
-//                    one will read from the ascending order input file and then //
-//                    perform and run the program and time the timing that it    //
-//                    takes to iterate through the whole infile and sort it.     //
-//                    Once Brought into Visual Studios attach the corresponding  //
-//                    infile and then run the program and it will compile in the //
-//                    solution explorer and the program will compile if need be, //
-//                    inside of the infile and exfile read in the user can input //
-//                    the relative path to the input file and that will compile  //
-//                    as well.                                                   //
+// User instructions: The program will automatically read in the data file so    //
+//                    when comes time for compilation, make sure that the data   //
+//                    filess are in the same folder and can also bring then into //
+//                    visual studios solution explorer so after all that is done,//
+//                    the only thing that the user needs to do is to hit ctrl+f5 //
+//                    to compile and the program will run and then display the   //
+//                    time it took to sort the data                              //
 //===============================================================================//
 // Instructor : Dr. Colmenares                                                   //
 // Class      : CMPS 3013 Advanced Algorithms                                    //
